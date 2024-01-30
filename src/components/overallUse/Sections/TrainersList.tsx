@@ -15,8 +15,8 @@ function TrainersList(props: Props): ReactNode {
     const [result, setResult] = useState<trainerToUse[]>([]);
 
     const fetchTrainers = async (): Promise<void> => {
-        await Data.getAllTrainersFromAPI(props.type)
-        setResult(props.type === 'house' ? Data.getTrainersForHome : Data.getTrainersForGym);
+        await Data.getAllTrainersCardFromAPI(props.type)
+        setResult(props.type === 'house' ? Data.getTrainersCardForHome : Data.getTrainersCardForGym);
     };
 
     useEffect(() => {
@@ -26,7 +26,7 @@ function TrainersList(props: Props): ReactNode {
     const classesForGrids: string = 'abcdefghij'
 
     return (
-        <TrainersCatalog className='TrainersCatalog  m-[0 auto]'>
+        <TrainersCatalog className='TrainersCatalog  m-[0 auto] ml-[]'>
             <h2 className='text-3xl font-bold mt-[80px] pb-8'>{props.type === 'house' ? 'Тренажеры для дома' : "Тренажеры для зала"}</h2>
             <ListWithItem>
                 {result.map((obj, item) => {

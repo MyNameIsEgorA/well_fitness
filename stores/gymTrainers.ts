@@ -12,6 +12,7 @@ import Img7 from '/public/images/homeTrainers/image 8 (6).png'
 import Img8 from '/public/images/homeTrainers/image 8 (7).png'
 import Img9 from '/public/images/homeTrainers/image 8 (8).png'
 import Img10 from '/public/images/homeTrainers/image 8 (9).png'
+import {Trainers} from "@/stores/dataStubs/trainers";
 
 export enum TypeToFetch {
     House = 'house',
@@ -30,7 +31,7 @@ type trainerLabels = {
     new: boolean,
 }
 
-export type sliderTrainer = {
+export type Trainer = {
     labels: trainerLabels,
     isLiked: boolean,
     isAvailable: boolean,
@@ -40,9 +41,10 @@ export type sliderTrainer = {
     oldPrice: string,
     newPrice: string,
     id: string,
+    img: any,
 }
 
-export type trainerToUse = trainer & {
+export type trainerToUseCard = trainer & {
     id: string
 }
 
@@ -62,42 +64,52 @@ const improvisedDataAPI: trainer[] = [
 
 class TrainersStore {
 
-    private trainersForHome: trainerToUse[] = []
-    private trainersForGym: trainerToUse[] = []
+    private trainersForHomeCard: trainerToUseCard[] = []
+    private trainersForGymCard: trainerToUseCard[] = []
+    private allTrainers: Trainer[] = []
 
     constructor() {
         makeAutoObservable(this)
     }
 
-    getAllTrainersFromAPI = async (type: TypeToFetch): Promise<void> => {
+    getAllTrainersCardFromAPI = async (type: TypeToFetch): Promise<void> => {
     //     IMITATION of API request
         if (type === 'house') {
-            this.trainersForHome = []
+            this.trainersForHomeCard = []
             for (let item of improvisedDataAPI) {
-                const data: trainerToUse = {
+                const data: trainerToUseCard = {
                     img: item.img, text: item.text, id: uuid4(), role: item.role,
                 }
-                this.trainersForHome.push(data)
+                this.trainersForHomeCard.push(data)
             }
         }
         if (type === 'gym') {
-            this.trainersForGym = []
+            this.trainersForGymCard = []
             for (let i: number = 0; i < 6; i++) {
                 let item: trainer = improvisedDataAPI[i]
-                const data: trainerToUse = {
+                const data: trainerToUseCard = {
                     img: item.img, text: item.text, id: uuid4(), role: item.role,
                 }
-                this.trainersForGym.push(data)
+                this.trainersForGymCard.push(data)
             }
         }
     }
 
-    get getTrainersForHome (): trainerToUse[] {
-        return this.trainersForHome
+    getAllTrainersFromAPI = async () => {
+    //     Imitation of API request
+        this.allTrainers = Trainers;
     }
 
-    get getTrainersForGym (): trainerToUse[] {
-        return this.trainersForGym
+    get getAllTrainers (): Trainer[] {
+        return this.allTrainers
+    }
+
+    get getTrainersCardForHome (): trainerToUseCard[] {
+        return this.trainersForHomeCard
+    }
+
+    get getTrainersCardForGym (): trainerToUseCard[] {
+        return this.trainersForGymCard
     }
 
 }

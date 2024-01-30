@@ -1,4 +1,4 @@
-import TrainersList from "@/src/components/mainPage/TrainersList";
+import TrainersList from "@/src/components/overallUse/Sections/TrainersList";
 import {TypeToFetch} from "@/stores/gymTrainers";
 import React from "react";
 import TrainersSlider from "@/src/components/overallUse/Sections/TrainersSlider";

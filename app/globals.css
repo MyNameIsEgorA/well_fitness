@@ -19,6 +19,7 @@
 body {
   color: rgb(var(--foreground-rgb));
   background: #f6f6f6;
+    overflow-x: hidden;
 }
 
 @layer utilities {
