@@ -24,6 +24,24 @@ export type trainer = {
     role?: string[];
 }
 
+type trainerLabels = {
+    sale: boolean,
+    like: boolean,
+    new: boolean,
+}
+
+export type sliderTrainer = {
+    labels: trainerLabels,
+    isLiked: boolean,
+    isAvailable: boolean,
+    isInShowroom: boolean,
+    title: string,
+    rating: number,
+    oldPrice: string,
+    newPrice: string,
+    id: string,
+}
+
 export type trainerToUse = trainer & {
     id: string
 }

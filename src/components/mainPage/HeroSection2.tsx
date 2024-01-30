@@ -3,8 +3,8 @@ import IMG from '/public/images/mainPage/HeroMain2.png'
 import Image from "next/image";
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import {ReactNode} from "react";
-import SwapButtons from "@/src/components/overallUse/SwapButtons";
-import LinkButton from "@/src/components/overallUse/LinkButton";
+import SwapButtons from "@/src/components/overallUse/SmallComponents/SwapButtons";
+import LinkButton from "@/src/components/overallUse/SmallComponents/LinkButton";
 
 const HeroSection1 = (): ReactNode => {
     return (

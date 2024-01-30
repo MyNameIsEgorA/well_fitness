@@ -2,7 +2,7 @@ import React, {FC, ReactNode} from 'react';
 import Link from "next/link";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faBars, faSearch, faUser} from "@fortawesome/free-solid-svg-icons";
-import Border from "@/src/components/overallUse/VerticalBorder";
+import Border from "@/src/components/overallUse/SmallComponents/VerticalBorder";
 import HeaderIcons from "@/src/components/overallUse/Header/HeaderIcons";
 import {random} from "nanoid";
 import styled from "styled-components";
@@ -38,12 +38,12 @@ const HeaderTop: FC<PropsTyped> = ({isAuthorized}): ReactNode => {
                 <Link href={'#'}>
                     <FontAwesomeIcon icon={faSearch} className={'ml-[50px]'}/>
                 </Link>
-                <HeaderIcons isAuthorized={isAuthorized} card={1} liked={1} statistic={3} key={+random(20)} onlyMobiles={false}/>
+                <HeaderIcons/>
                 <FontAwesomeIcon icon={faBars} size='xl'/>
             </div>
 
             <div className="low-scale flex space-x-10">
-                <HeaderIcons isAuthorized={isAuthorized} card={1} liked={1} statistic={3} key={+random(20)} onlyMobiles={true}/>
+                <HeaderIcons/>
                 <FontAwesomeIcon icon={faBars} size='xl'/>
             </div>
         </HeaderTopStyled>

@@ -1,5 +1,5 @@
 import React, {ReactNode} from 'react';
-import {trainerToUse} from "@/stores/gymForHouse";
+import {trainerToUse} from "@/stores/gymTrainers";
 import styled from "styled-components";
 import Image from "next/image";
 

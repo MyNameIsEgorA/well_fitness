@@ -2,9 +2,9 @@
 
 import {useState, useEffect, ReactNode} from 'react';
 import styled from "styled-components";
-import {Data, trainer, trainerToUse, TypeToFetch} from "@/stores/gymForHouse";
-import TrainerCard from "@/src/components/overallUse/TrainerCard";
-import LinkButton from "@/src/components/overallUse/LinkButton";
+import {Data, trainer, trainerToUse, TypeToFetch} from "@/stores/gymTrainers";
+import TrainerCard from "@/src/components/overallUse/SmallComponents/TrainerCard";
+import LinkButton from "@/src/components/overallUse/SmallComponents/LinkButton";
 
 type Props = {
     type: TypeToFetch,

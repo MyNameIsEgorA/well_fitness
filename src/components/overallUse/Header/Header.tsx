@@ -3,6 +3,7 @@
 import React, {FC, ReactNode} from "react";
 import HeaderBottom from "@/src/components/overallUse/Header/HeaderBottom";
 import HeaderTop from "@/src/components/overallUse/Header/HeaderTop";
+import HeaderOptions from "@/src/components/overallUse/Header/HeaderOptions";
 
 type PropsType = {
     isAuthorized: boolean;
@@ -15,6 +16,7 @@ const Header: FC<PropsType> = ({isAuthorized}): ReactNode => {
 
             <HeaderTop isAuthorized/>
             <HeaderBottom isAuthorized/>
+            <HeaderOptions/>
         </header>
     )
 };

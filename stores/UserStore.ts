@@ -1,6 +1,6 @@
 import {makeAutoObservable} from 'mobx'
 
-type UserNotifications = {
+export type UserNotifications = {
     statistic: number,
     liked: number,
     cart: number,
@@ -18,13 +18,15 @@ class UserStore {
         makeAutoObservable(this)
     }
 
+    isLoggined: boolean = true
+
     private userData: UserNotifications = {
         statistic: 0,
         liked: 0,
         cart: 0,
     }
 
-    getUserDataAPI = async (id: number) => {
+    getUserDataAPI = async (id: number = 10): Promise<void> => {
     // Ультралютый запрос на несуществующий сервер
         this.userData = data
     }

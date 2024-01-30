@@ -1,37 +1,41 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDiagramPredecessor, faHeart, faCartPlus } from "@fortawesome/free-solid-svg-icons";
 
-import React, { FC, ReactNode } from 'react';
+import React, {FC, ReactNode, useEffect, useState} from 'react';
 import styled from "styled-components";
+import UserData, {UserNotifications} from "@/stores/UserStore";
 
-type Icons = {
-    statistic: number,
-    liked: number,
-    card: number,
-    onlyMobiles: boolean,
-    isAuthorized: boolean
-}
+const HeaderIcons: FC = (): ReactNode => {
 
-const HeaderIcons: FC<Icons> = ({ statistic, card, liked , onlyMobiles, isAuthorized}) => {
-
-    if (!isAuthorized) {
+    if (!UserData.isLoggined) {
         return false;
     }
+
+    const [data, setData] = useState<UserNotifications>({liked: 0, cart: 0, statistic: 0})
+
+    const getData = async (): Promise<void> => {
+        await UserData.getUserDataAPI()
+        setData(UserData.getUserData)
+    }
+
+    useEffect(() => {
+        getData()
+    }, []);
 
     return (
 
         <HeaderIconsStyled className='space-x-10'>
-            {!onlyMobiles && <div className="icon-wrapper">
+            <div className="icon-wrapper nonMobile">
                 <FontAwesomeIcon icon={faDiagramPredecessor} size={'xl'}/>
-                <span className="icon-number">{statistic}</span>
-            </div>}
-            {!onlyMobiles && <div className="icon-wrapper">
+                <span className="icon-number">{data.statistic}</span>
+            </div>
+            <div className="icon-wrapper nonMobile">
                 <FontAwesomeIcon icon={faHeart} size={'xl'}/>
-                <span className="icon-number">{liked}</span>
-            </div>}
+                <span className="icon-number">{data.liked}</span>
+            </div>
             <div className="icon-wrapper">
                 <FontAwesomeIcon icon={faCartPlus} color='' size={'xl'}/>
-                <span className="icon-number">{card}</span>
+                <span className="icon-number">{data.cart}</span>
             </div>
         </HeaderIconsStyled>
 
@@ -39,8 +43,6 @@ const HeaderIcons: FC<Icons> = ({ statistic, card, liked , onlyMobiles, isAuthor
 };
 
 const HeaderIconsStyled = styled.div`
-    
-    
     
     .icon-wrapper {
         position: relative;
@@ -64,8 +66,12 @@ const HeaderIconsStyled = styled.div`
         align-items: center;
         justify-content: center;
         font-size: 12px;
-        
     }
+    
+    @media screen and (max-width: 750px) {
+        display: none;
+    }
+    
 `
 
 export default HeaderIcons;

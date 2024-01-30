@@ -6,7 +6,7 @@ import HeaderIcons from "@/src/components/overallUse/Header/HeaderIcons";
 import {random} from "nanoid";
 import styled from "styled-components";
 import React, {FC, ReactNode} from "react";
-import Border from "@/src/components/overallUse/VerticalBorder";
+import Border from "@/src/components/overallUse/SmallComponents/VerticalBorder";
 
 type PropsType = {
     isAuthorized: boolean;
@@ -27,7 +27,7 @@ const HeaderBottom: FC<PropsType> = ({isAuthorized}): ReactNode => {
             </div>
             <div className="right">
                 {/*State manager for statistics*/}
-                <HeaderIcons isAuthorized={isAuthorized} card={1} liked={1} statistic={3} key={+random(20)} onlyMobiles={false}/>
+                <HeaderIcons key={+random(20)}/>
             </div>
         </HeaderBottomStyled>
         )
