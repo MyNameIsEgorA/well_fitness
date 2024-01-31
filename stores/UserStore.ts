@@ -1,10 +1,5 @@
 import {makeAutoObservable} from 'mobx'
-
-export type UserNotifications = {
-    statistic: number,
-    liked: number,
-    cart: number,
-}
+import {UserNotifications} from "@/types/UserTypes/HeaderTypes";
 
 const data: UserNotifications = {
     statistic: 9,

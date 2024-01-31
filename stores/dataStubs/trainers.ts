@@ -1,9 +1,9 @@
 import Trainer1 from '@/public/images/trainers/Trainer1.png'
 import Trainer2 from '@/public/images/trainers/Trainer2.png'
 import Trainer3 from '@/public/images/trainers/Trainer3.png'
-import {Trainer} from "@/stores/gymTrainers";
+import {TrainerOnList} from "@/types/TrainersTypes/TrainerTypes";
 
-export const Trainers: Trainer[] = [
+export const Trainers: TrainerOnList[] = [
     {labels: {sale: true, like: true, new: true}, isLiked: true, isAvailable: true, isInShowroom: true, title: 'Беговая дорожка CardioPower S35', rating: 5, oldPrice: '99.999', newPrice: '79.999', id: '1', img: Trainer1, category: "Беговая дорожка"},
     {labels: {sale: true, like: false, new: true}, isLiked: false, isAvailable: true, isInShowroom: false, title: 'Беговая дорожка CardioPower S36', rating: 4.5, oldPrice: '109.999', newPrice: '89.999', id: '2', img: Trainer1, category: "Беговая дорожка"},
     {labels: {sale: true, like: false, new: false}, isLiked: true, isAvailable: false, isInShowroom: true, title: 'Беговая дорожка CardioPower S37', rating: 3.5, oldPrice: '119.999', newPrice: '99.999', id: '3', img: Trainer2, category: "Беговая дорожка"},

@@ -6,17 +6,7 @@ import Trainer5 from '@/public/images/trainersCategories/Trainer5.png'
 import Trainer6 from '@/public/images/trainersCategories/Trainer6.png'
 import Trainer7 from '@/public/images/trainersCategories/Trainer7.png'
 import Trainer8 from '@/public/images/trainersCategories/Trainer8.png'
-
-type category = {
-    title: string,
-    amount: number
-}
-
-export type trainersType = {
-    img: any,
-    title: string,
-    categories: category[]
-}
+import {trainersType} from "@/types/TrainersTypes/TrainerCardTypes";
 
 export const trainersForHomeCategories: trainersType[] = [
     {

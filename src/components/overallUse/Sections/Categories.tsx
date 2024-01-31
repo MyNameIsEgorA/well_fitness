@@ -3,7 +3,8 @@
 import React, {FC, ReactNode, useEffect, useState} from 'react';
 
 import {Data} from "@/stores/gymTrainers";
-import {trainersType} from "@/stores/dataStubs/trainersTypes";
+// import {trainersType} from "@/stores/dataStubs/trainersTypes";
+import {trainersType} from "@/types/TrainersTypes/TrainerCardTypes";
 import styled from "styled-components";
 import Category from "@/src/components/overallUse/SmallComponents/Category";
 

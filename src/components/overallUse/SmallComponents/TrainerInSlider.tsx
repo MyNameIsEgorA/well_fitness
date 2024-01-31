@@ -1,5 +1,5 @@
 import React, {FC, ReactNode, useState} from 'react';
-import {Trainer} from "@/stores/gymTrainers";
+import {TrainerOnList} from "@/types/TrainersTypes/TrainerTypes";
 import styled from "styled-components";
 import Sale from '@/public/images/SALE_LABEL.svg'
 import Like from '@/public/images/LIKE_LABEL.svg'
@@ -8,11 +8,10 @@ import Statistic from '@/public/images/STATISTIC.svg'
 import Heart from '@/public/images/HEART_LABEL.svg'
 import Image from "next/image";
 import StarsRating from "@/src/components/overallUse/SmallComponents/StarsRating";
-import LinkButton from "@/src/components/overallUse/SmallComponents/LinkButton";
 import Link from "next/link";
 
 
-const TrainerInSlider: FC<Trainer> = ({
+const TrainerInSlider: FC<TrainerOnList> = ({
     labels,
     id,
     isLiked,
@@ -22,7 +21,7 @@ const TrainerInSlider: FC<Trainer> = ({
     rating,
     title,
     isAvailable,
-    img
+    img,
 }): ReactNode => {
 
     const [isActive, setIsActive] = useState<boolean>(false)

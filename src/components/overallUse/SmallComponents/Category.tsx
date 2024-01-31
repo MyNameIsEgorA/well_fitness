@@ -1,8 +1,7 @@
 import React, {FC} from 'react';
-import {trainersType} from "@/stores/dataStubs/trainersTypes";
+import {trainersType} from "@/types/TrainersTypes/TrainerCardTypes";
 import Image from "next/image";
 import styled from "styled-components";
-import {tag} from "postcss-selector-parser";
 
 const Category: FC<trainersType> = ({title, categories, img}) => {
 

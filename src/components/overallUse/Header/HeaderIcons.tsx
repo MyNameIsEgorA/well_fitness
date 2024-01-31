@@ -3,7 +3,8 @@ import { faDiagramPredecessor, faHeart, faCartPlus } from "@fortawesome/free-sol
 
 import React, {FC, ReactNode, useEffect, useState} from 'react';
 import styled from "styled-components";
-import UserData, {UserNotifications} from "@/stores/UserStore";
+import UserData from "@/stores/UserStore";
+import {UserNotifications} from "@/types/UserTypes/HeaderTypes";
 
 const HeaderIcons: FC = (): ReactNode => {
 

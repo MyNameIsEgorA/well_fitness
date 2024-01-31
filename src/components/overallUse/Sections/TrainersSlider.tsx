@@ -1,14 +1,13 @@
 "use client"
 import React, { FC, ReactNode, useEffect, useState } from 'react';
 import styled from "styled-components";
-import { Data, Trainer } from "@/stores/gymTrainers";
+import { Data } from "@/stores/gymTrainers";
+import {TrainerOnList} from "@/types/TrainersTypes/TrainerTypes";
 import TrainerInSlider from "@/src/components/overallUse/SmallComponents/TrainerInSlider";
 
 const TrainersSlider: FC = (): ReactNode => {
     const [option, setOption] = useState<number>(0);
-    const [trainers, setTrainers] = useState<Trainer[]>([]);
-    const [translateX, setTranslateX] = useState<number>(0);
-
+    const [trainers, setTrainers] = useState<TrainerOnList[]>([]);
     const changeItem = async () => {
         await Data.getAllTrainersFromAPI();
         setTrainers(Data.getAllTrainers);
@@ -32,6 +31,7 @@ const TrainersSlider: FC = (): ReactNode => {
                 oldPrice={trainer.oldPrice}
                 rating={trainer.rating}
                 labels={trainer.labels}
+                category={'Беговая дорожка'}
             />
         );
     });
@@ -39,7 +39,7 @@ const TrainersSlider: FC = (): ReactNode => {
     const activeStyle: string = 'text-3xl color-black'
 
     return (
-        <TrainerSliderStyled style={{transform: `translateX(${translateX}px)`}}>
+        <TrainerSliderStyled>
             <h2 className='flex space-x-10 items-center'>
                 <div className={option === 0 ? activeStyle : ''} onClick={() => setOption(0)}>Акция</div>
                 <div className={option === 1 ? activeStyle : ''} onClick={() => setOption(1)}>Новинки</div>

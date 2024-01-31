@@ -1,5 +1,4 @@
 import {makeAutoObservable} from 'mobx'
-import {StaticImageData} from "next/image";
 import {v4 as uuid4} from 'uuid'
 
 import First from '/public/images/homeTrainers/first.png'
@@ -13,45 +12,18 @@ import Img8 from '/public/images/homeTrainers/image 8 (7).png'
 import Img9 from '/public/images/homeTrainers/image 8 (8).png'
 import Img10 from '/public/images/homeTrainers/image 8 (9).png'
 import {Trainers} from "@/stores/dataStubs/trainers";
-import {trainersForHomeCategories, trainersType} from "@/stores/dataStubs/trainersTypes";
+import {trainersForHomeCategories} from "@/stores/dataStubs/trainersTypes";
+import {trainerCard} from "@/types/TrainersTypes/TrainerCardTypes";
+import {trainersType} from "@/types/TrainersTypes/TrainerCardTypes";
+import {TrainerOnList} from "@/types/TrainersTypes/TrainerTypes";
+import {TypeToFetch} from "@/types/MainPageComponents/MainPageTypes";
 
-export enum TypeToFetch {
-    House = 'house',
-    Gym = 'gym',
-}
-
-export type trainer = {
-    img: StaticImageData,
-    text: string,
-    role?: string[];
-}
-
-type trainerLabels = {
-    sale: boolean,
-    like: boolean,
-    new: boolean,
-}
-
-export type Trainer = {
-    labels: trainerLabels,
-    isLiked: boolean,
-    isAvailable: boolean,
-    isInShowroom: boolean,
-    title: string,
-    rating: number,
-    oldPrice: string,
-    newPrice: string,
-    id: string,
-    img: any,
-    category: string,
-}
-
-export type trainerToUseCard = trainer & {
+export type trainerToUseCard = trainerCard & {
     id: string
 }
 
 
-const improvisedDataAPI: trainer[] = [
+const improvisedDataAPI: trainerCard[] = [
     {img: First, text: 'Беговые дорожки', role: ['first', 'purple', 'big']},
     {img: Second, text: 'Эллиптические тренажеры', role: ['big']},
     {img: Img3, text: 'Велотренажеры'},
@@ -68,7 +40,7 @@ class TrainersStore {
 
     private trainersForHomeCard: trainerToUseCard[] = []
     private trainersForGymCard: trainerToUseCard[] = []
-    private allTrainers: Trainer[] = []
+    private allTrainers: TrainerOnList[] = []
     private homeTrainersCategories: trainersType[] = []
 
     constructor() {
@@ -89,7 +61,7 @@ class TrainersStore {
         if (type === 'gym') {
             this.trainersForGymCard = []
             for (let i: number = 0; i < 6; i++) {
-                let item: trainer = improvisedDataAPI[i]
+                let item: trainerCard = improvisedDataAPI[i]
                 const data: trainerToUseCard = {
                     img: item.img, text: item.text, id: uuid4(), role: item.role,
                 }
@@ -110,7 +82,7 @@ class TrainersStore {
         this.allTrainers = Trainers;
     }
 
-    get getAllTrainers (): Trainer[] {
+    get getAllTrainers (): TrainerOnList[] {
         return this.allTrainers
     }
 

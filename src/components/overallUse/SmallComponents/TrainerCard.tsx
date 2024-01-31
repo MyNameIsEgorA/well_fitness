@@ -1,22 +1,22 @@
-import React, {ReactNode} from 'react';
-import {trainer} from "@/stores/gymTrainers";
+import React, {FC, ReactNode} from 'react';
+import {trainerCard} from "@/types/TrainersTypes/TrainerCardTypes";
 import styled from "styled-components";
 import Image from "next/image";
 
-type PropsType = trainer & {
+type PropsType = trainerCard & {
     position: string,
 }
 
-const TrainerCard = (props: PropsType): ReactNode => {
+const TrainerCard: FC<PropsType> = ({position, img, role, text}): ReactNode => {
 
-    let bigCard: string = props.role?.includes('big') ? "big " : 'default '
-    bigCard += props.role?.includes('purple') ? ' text-white bg-violet-500 z-10 ' : ''
+    let bigCard: string = role?.includes('big') ? "big " : 'default '
+    bigCard += role?.includes('purple') ? ' text-white bg-violet-500 z-10 ' : ''
 
     return (
-        <TrainerItem className={`${props.position} bg-white rounded-2xl shadow-grey-200 shadow-xl overflow-hidden z-[-20]`}>
+        <TrainerItem className={`${position} bg-white rounded-2xl shadow-grey-200 shadow-xl overflow-hidden z-[-20]`}>
             <div className={`${bigCard} relative`}>
-                <h4 className=''>{props.text}</h4>
-                <Image src={props.img} alt={'Карточка товара'} className='img h-max absolute right-0 z-[-10] top-[-10px]'/>
+                <h4 className=''>{text}</h4>
+                <Image src={img} alt={'Карточка товара'} className='img h-max absolute right-0 z-[-10] top-[-10px]'/>
             </div>
         </TrainerItem>
     )

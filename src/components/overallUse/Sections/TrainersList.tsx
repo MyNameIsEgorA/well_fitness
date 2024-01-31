@@ -2,9 +2,13 @@
 
 import {useState, useEffect, ReactNode} from 'react';
 import styled from "styled-components";
-import {Data, trainer, trainerToUse, TypeToFetch} from "@/stores/gymTrainers";
+// import {Data, trainerCard, trainerToUse, TypeToFetch} from "@/stores/gymTrainers";
+import {Data} from "@/stores/gymTrainers";
+import {trainerCard} from "@/types/TrainersTypes/TrainerCardTypes";
+import {trainerToUseCard} from "@/stores/gymTrainers";
 import TrainerCard from "@/src/components/overallUse/SmallComponents/TrainerCard";
 import LinkButton from "@/src/components/overallUse/SmallComponents/LinkButton";
+import {TypeToFetch} from "@/types/MainPageComponents/MainPageTypes";
 
 type Props = {
     type: TypeToFetch,
@@ -12,7 +16,7 @@ type Props = {
 }
 
 function TrainersList(props: Props): ReactNode {
-    const [result, setResult] = useState<trainerToUse[]>([]);
+    const [result, setResult] = useState<trainerToUseCard[]>([]);
 
     const fetchTrainers = async (): Promise<void> => {
         await Data.getAllTrainersCardFromAPI(props.type)
