@@ -1,9 +1,9 @@
 import React, {ReactNode} from 'react';
-import {trainerToUse} from "@/stores/gymTrainers";
+import {trainer} from "@/stores/gymTrainers";
 import styled from "styled-components";
 import Image from "next/image";
 
-type PropsType = trainerToUse & {
+type PropsType = trainer & {
     position: string,
 }
 

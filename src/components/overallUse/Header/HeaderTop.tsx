@@ -1,3 +1,5 @@
+"use client"
+
 import React, {FC, ReactNode} from 'react';
 import Link from "next/link";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -18,7 +20,9 @@ const HeaderTop: FC<PropsTyped> = ({isAuthorized}): ReactNode => {
     return (
         <HeaderTopStyled className={'container z-[10] h-20 items-center m-[0 auto]'}>
 
-            <Image src={Logo} className='img' alt={'Well fitness distribution retail clubs'}/>
+            <Link href={'/'}>
+                <Image src={Logo} className='img' alt={'Well fitness distribution retail clubs'}/>
+            </Link>
             <HeaderDropDown/>
             <div className='available-on-max 1810px:flex items-center ml-[500px] hidden'>
                 <div className=''>Для дилеров</div>

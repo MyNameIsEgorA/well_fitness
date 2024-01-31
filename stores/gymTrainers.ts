@@ -13,6 +13,7 @@ import Img8 from '/public/images/homeTrainers/image 8 (7).png'
 import Img9 from '/public/images/homeTrainers/image 8 (8).png'
 import Img10 from '/public/images/homeTrainers/image 8 (9).png'
 import {Trainers} from "@/stores/dataStubs/trainers";
+import {trainersForHomeCategories, trainersType} from "@/stores/dataStubs/trainersTypes";
 
 export enum TypeToFetch {
     House = 'house',
@@ -42,6 +43,7 @@ export type Trainer = {
     newPrice: string,
     id: string,
     img: any,
+    category: string,
 }
 
 export type trainerToUseCard = trainer & {
@@ -67,6 +69,7 @@ class TrainersStore {
     private trainersForHomeCard: trainerToUseCard[] = []
     private trainersForGymCard: trainerToUseCard[] = []
     private allTrainers: Trainer[] = []
+    private homeTrainersCategories: trainersType[] = []
 
     constructor() {
         makeAutoObservable(this)
@@ -95,6 +98,13 @@ class TrainersStore {
         }
     }
 
+    getAllTrainersCategories = async (type: string): Promise<void> => {
+    //      HARDCORE API REQUEST
+        if (type === 'house') {
+            this.homeTrainersCategories = trainersForHomeCategories;
+        }
+    }
+
     getAllTrainersFromAPI = async () => {
     //     Imitation of API request
         this.allTrainers = Trainers;
@@ -112,6 +122,9 @@ class TrainersStore {
         return this.trainersForGymCard
     }
 
+    get AllTrainersCategories (): trainersType[] {
+        return this.homeTrainersCategories
+    }
 }
 
 export const Data: TrainersStore = new TrainersStore();

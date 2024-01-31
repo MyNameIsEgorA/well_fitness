@@ -3,9 +3,6 @@ import React, { FC, ReactNode, useEffect, useState } from 'react';
 import styled from "styled-components";
 import { Data, Trainer } from "@/stores/gymTrainers";
 import TrainerInSlider from "@/src/components/overallUse/SmallComponents/TrainerInSlider";
-import SwapButtons from "@/src/components/overallUse/SmallComponents/SwapButtons";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faAngleLeft, faAngleRight} from "@fortawesome/free-solid-svg-icons";
 
 const TrainersSlider: FC = (): ReactNode => {
     const [option, setOption] = useState<number>(0);
@@ -48,8 +45,10 @@ const TrainersSlider: FC = (): ReactNode => {
                 <div className={option === 1 ? activeStyle : ''} onClick={() => setOption(1)}>Новинки</div>
                 <div className={option === 2 ? activeStyle : ''} onClick={() => setOption(2)}>Мы рекомендуем</div>
             </h2>
-            <div className="mt-[20px] flex justify-between mr-[-100%] pb-5 trainer-slider-content">
-                {trainersComponents}
+            <div className="carousel mt-[20px] flex justify-between pb-5 trainer-slider-content">
+                {option === 0 && trainersComponents.filter((obj) => obj.props.labels.sale)}
+                {option === 1 && trainersComponents.filter((obj) => obj.props.labels.new)}
+                {option === 2 && trainersComponents.filter((obj) => obj.props.labels.like)}
             </div>
         </TrainerSliderStyled>
     );
@@ -69,7 +68,7 @@ const TrainerSliderStyled = styled.section`
     }
 
     &::-webkit-scrollbar {
-        height: 8px;
+        height: 16px;
     }
 
     &::-webkit-scrollbar-track {
@@ -78,7 +77,7 @@ const TrainerSliderStyled = styled.section`
 
     &::-webkit-scrollbar-thumb {
         background: #a6b3ff;
-        border-radius: 4px;
+        border-radius: 8px;
         transition: 500ms;
     }
 
@@ -92,6 +91,10 @@ const TrainerSliderStyled = styled.section`
         align-items: center;
         position: sticky;
         width: 100%;
+    }
+    
+    .carousel {
+        margin-right: initial;
     }
 `;
 
